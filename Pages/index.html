@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Add New Pizza</h2>
+        <form id="pizzaForm">
+            <div class="form-group">
+                <label for="name">Pizza Name:</label>
+                <input type="text" class="form-control" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="type">Pizza Type:</label>
+                <input type="text" class="form-control" id="type" required>
+            </div>
+            <div class="form-group">
+                <label for="size">Size:</label>
+                <select class="form-control" id="size" required>
+                    <option value="Small">Small</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Large">Large</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="price">Price:</label>
+                <input type="number" class="form-control" id="price" step="0.01" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Pizza</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+                // Initialize Supabase
+                const supabaseUrl = 'https://tgwdhdascgmwyjorevyf.supabase.co';
+                const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRnd2RoZGFzY2dtd3lqb3JldnlmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzAwNzg1MjcsImV4cCI6MjA0NTY1NDUyN30.Dn04vhFonpePpuXsjRohDpJn6m55c_gMdtfAT0-ADWI';
+
+                const { createClient } = supabase;  // Destructure createClient from supabase
+                const supabaseClient = createClient(supabaseUrl, supabaseKey)
+
+
+                // Form submission handler
+                const pizzaForm = document.getElementById('pizzaForm');
+                pizzaForm.addEventListener('submit', async (e) => {
+                    e.preventDefault(); // Prevent the default form submission behavior
+
+                    const name = document.getElementById('name').value;
+                    const type = document.getElementById('type').value;
+                    const size = document.getElementById('size').value;
+                    const price = parseFloat(document.getElementById('price').value);
+
+                    // Insert new pizza into the Supabase table
+                    const { data, error } = await supabase
+                        .from('pizzas') // Adjust the table name if different
+                        .insert([{ name, type, size, price }]);
+
+                    if (error) {
+                        console.error('Error inserting pizza:', error);
+                        alert('Error adding pizza. Check the console for more details.');
+                    } else {
+                        alert('Pizza added successfully!');
+                        pizzaForm.reset(); // Reset form fields after successful submission
+                    }
+                });
+            });
+
+    </script>
+</body>
+</html>

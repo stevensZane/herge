@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza Management</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            margin-top: 50px;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #FF6347;
+        }
+
+        .btn-danger {
+            margin-right: 5px;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Pizza List</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Size</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody id="pizzaTableBody">
+                <!-- Table rows will be populated here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Initialize Supabase
+        const supabaseUrl = 'https://tgwdhdascgmwyjorevyf.supabase.co';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRnd2RoZGFzY2dtd3lqb3JldnlmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzAwNzg1MjcsImV4cCI6MjA0NTY1NDUyN30.Dn04vhFonpePpuXsjRohDpJn6m55c_gMdtfAT0-ADWI';
+
+        const { createClient } = supabase;  // Destructure createClient from supabase
+        const supabaseClient = createClient(supabaseUrl, supabaseKey)
+
+        // Function to fetch pizzas from Supabase and populate the table
+        async function fetchPizzas() {
+            const { data: pizza, error } = await supabaseClient
+                .from('pizza') // Replace with your table name
+                .select('*');
+
+            if (error) {
+                console.error('Error fetching pizzas:', error.message);
+                return;
+            }
+
+            const pizzaTableBody = document.getElementById('pizzaTableBody');
+            pizzaTableBody.innerHTML = ''; // Clear the table body
+
+            // Populate the table with fetched data
+            pizza.forEach(pizza => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                <td>${pizza.name}</td>
+                <td>${pizza.type}</td>
+                <td>${pizza.size}</td>
+                <td>${pizza.price}</td>
+                <td>
+                    <button class="btn btn-warning btn-sm" onclick="editPizza(${pizza.id})">Edit</button>
+                    <button class="btn btn-danger btn-sm" onclick="deletePizza(${pizza.id})">Delete</button>
+                </td>
+            `;
+                pizzaTableBody.appendChild(row);
+            });
+        }
+
+        // Function to delete a pizza
+        async function deletePizza(id) {
+            const { error } = await supabaseClient
+                .from('pizza') // Replace with your table name
+                .delete()
+                .match({ id }); // Match the pizza by ID
+
+            if (error) {
+                console.error('Error deleting pizza:', error.message);
+                alert('Error deleting pizza: ' + error.message);
+            } else {
+                alert('Pizza deleted successfully!');
+                fetchPizzas(); // Refresh the table after deletion
+            }
+        }
+
+        // Function to edit a pizza (Placeholder function)
+        function editPizza(id) {
+            alert(`Edit functionality for pizza ID: ${id} is not implemented yet.`);
+            // Here you would implement the logic to edit the pizza, perhaps by opening a modal with a form prefilled with the pizza data.
+        }
+
+        // Fetch pizzas when the page loads
+        fetchPizzas();
+    </script>
+
+</body>
+
+</html>

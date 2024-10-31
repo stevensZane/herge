@@ -1,0 +1,111 @@
+/* Custom styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+/* Sidebar styling */
+#sidebar {
+    min-height: 100vh;
+    background-color: #ff7f50;
+    /* Orange theme color */
+    color: white;
+    position: fixed;
+    width: 250px;
+    top: 0;
+    left: 0;
+    padding-top: 20px;
+    transition: all 0.3s;
+}
+
+#sidebar .nav-link {
+    color: white;
+    font-weight: bold;
+    padding: 12px 20px;
+    margin: 5px 0;
+    margin-top: 20px;
+    border-radius: 5px;
+    transition: background 0.2s ease-in-out;
+}
+
+.dash:hover {
+    background-color: #f4f4f4;
+}
+
+#sidebar .nav-link:hover {
+    background-color: #ffb347;
+}
+
+#sidebar .nav-link i {
+    margin-right: 10px;
+}
+
+/* Header */
+#header {
+    background-color: #ff7f50;
+    color: white;
+    padding: 10px;
+    padding-left: 260px;
+    /* space for fixed sidebar */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+#header .navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+#header .form-control {
+    border-radius: 20px;
+}
+
+/* Main content with sidebar space */
+#main-content {
+    padding: 20px;
+    padding-left: 260px;
+    /* space for fixed sidebar */
+    margin-top: 60px;
+    /* space for header */
+    background-color: #ffffff;
+    border-radius: 8px;
+}
+
+/* Boxes and table styling */
+.info-box {
+    background-color: #ffebcd;
+    padding: 20px;
+    border-radius: 8px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 767px) {
+    #sidebar {
+        position: static;
+        width: 100%;
+        min-height: auto;
+        padding: 0;
+    }
+
+    #header {
+        padding-left: 0;
+    }
+
+    #main-content {
+        padding-left: 0;
+    }
+
+    #sidebar .nav-link {
+        text-align: center;
+        padding: 10px 15px;
+        margin: 5px 0;
+    }
+}
