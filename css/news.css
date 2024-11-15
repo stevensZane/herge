@@ -1,0 +1,43 @@
+body,
+html {
+    height: 100%;
+    /* Ensure the body and html take full height */
+    margin: 0;
+    /* Remove default margins */
+}
+
+.sidebar {
+    background-color: #f8f9fa;
+    /* Light background for sidebar */
+    height: 100vh;
+    /* Full height of the viewport */
+    position: fixed;
+    /* Fixed position */
+    top: 0;
+    /* Stick to the top */
+    left: 0;
+    /* Align with the left */
+    overflow-y: auto;
+    /* Optional: allows sidebar to scroll if necessary */
+}
+
+.scrollable-section {
+    margin-left: 200px;
+    /* Adjust margin to avoid overlap with sidebar */
+    max-height: 100vh;
+    /* Set a maximum height for the right section */
+    overflow-y: auto;
+    /* Enable vertical scrolling */
+    padding: 15px;
+    /* Optional padding for aesthetic */
+    background-color: white;
+    /* Background color for the section */
+    border: 1px solid #ddd;
+    /* Optional border */
+    border-radius: 5px;
+    /* Optional rounded corners */
+}
+
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}

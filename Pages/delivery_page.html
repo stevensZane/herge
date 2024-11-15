@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery Dashboard</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Additional styling */
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .order-box {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .validate-btn {
+            width: 100%;
+        }
+
+        footer {
+            margin-top: 20px;
+            padding: 10px;
+            text-align: center;
+            background-color: #e9ecef;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Logo and Name -->
+    <div class="container text-center logo">
+        <img src="logo.png" alt="Logo" style="width: 50px; height: 50px; margin-right: 10px;">
+        <span>Pizza Shop</span>
+    </div>
+
+    <!-- Order Details Box -->
+    <div class="container mt-4">
+        <div class="order-box">
+            <h4 class="text-center mb-4">Order Details</h4>
+            <table class="table table-bordered">
+                <thead class="table-light">
+                    <tr>
+                        <th>Item</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Margherita Pizza</td>
+                        <td>1</td>
+                        <td>$10.00</td>
+                    </tr>
+                    <tr>
+                        <td>Pepperoni Pizza</td>
+                        <td>2</td>
+                        <td>$20.00</td>
+                    </tr>
+                    <tr>
+                        <td>Drinks</td>
+                        <td>3</td>
+                        <td>$6.00</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="text-end"><strong>Total</strong></td>
+                        <td><strong>$36.00</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button class="btn btn-success validate-btn">Validate Order</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        Pizza Shop &copy; All rights reserved
+    </footer>
+
+    <!-- Bootstrap JS (optional, for responsiveness) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

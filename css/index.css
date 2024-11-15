@@ -1,0 +1,92 @@
+/* Theme color */
+:root {
+    --theme-color: #FF8C00;
+}
+
+/* Centered Navbar */
+.navbar-nav .nav-link {
+    color: #555;
+}
+
+/* Main content styling */
+.main-content {
+    display: flex;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url(../assests/image/delicious-pizza-studio_23-2151846554.avif);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    text-align: center;
+    color: var(--theme-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.pizza-icon {
+    font-size: 4rem;
+    color: var(--theme-color);
+}
+
+.buttons {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.buttons button {
+    background: var(--theme-color);
+    outline: none;
+    border: none;
+    transition: 0.3s ease-in;
+}
+
+.buttons button:hover {
+    background-color: #f8f8f8;
+    color: black;
+
+}
+
+/* Social links */
+.social-links {
+    margin-top: 20px;
+}
+
+.social-links a {
+    margin: 0 15px;
+    font-size: 1.5rem;
+    color: white;
+    text-decoration: none;
+}
+
+/* Footer styling */
+.reserved-footer {
+    text-align: center;
+    color: #aaa;
+    padding: 15px 0;
+    font-size: 0.9rem;
+    background-color: #f0f0f0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Right box styling */
+.side-box {
+    position: absolute;
+    right: 2%;
+    top: 15%;
+    width: 250px;
+    height: 450px;
+    border: 2px solid var(--theme-color);
+    border-radius: 10px;
+    padding: 15px;
+    background-color: #f8f8f8;
+}
+

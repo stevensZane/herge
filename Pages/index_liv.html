@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion de Livraison</title>
+    <link rel="stylesheet" href="../css/styles_liv.css">
+</head>
+<body>
+    <header>
+        <h1>Gestion des Livraisons</h1>
+    </header>
+    <main>
+        <section id="form-section">
+            <form id="delivery-form">
+                <label for="client-name">Nom du Client:</label>
+                <input type="text" id="client-name" required>
+
+                <label for="client-phone">Téléphone du Client:</label>
+                <input type="tel" id="client-phone" required>
+
+                <label for="delivery-zone">Zone de Livraison:</label>
+                <select id="delivery-zone" required>
+                    <option value="zone1">Zone 1 - 1000 FCFA</option>
+                    <option value="zone2">Zone 2 - 1500 FCFA</option>
+                    <option value="zone3">Zone 3 - 2000 FCFA</option>
+                </select>
+
+                <label for="food-amount">Montant de la Nourriture (FCFA):</label>
+                <input type="number" id="food-amount" required>
+
+                <label for="food-payment">Mode de Paiement pour la Nourriture:</label>
+                <select id="food-payment" required>
+                    <option value="izoua">Chez Izoua</option>
+                    <option value="moi">Chez Moi</option>
+                </select>
+
+                <button type="submit" class="add-btn">Ajouter Livraison</button>
+            </form>
+        </section>
+
+        <section id="delivery-section">
+            <h2>Liste des Livraisons</h2>
+            <ul id="delivery-list"></ul>
+        </section>
+        <section id="daily-summary">
+            <h2>Bilan Journalier</h2>
+            <div id="food-summary">
+                <h3>Nourriture</h3>
+                <p>Chez Izoua : <span id="food-izoua-total">0 FCFA</span></p>
+                <p>Chez Moi : <span id="food-moi-total">0 FCFA</span></p>
+            </div>
+            <div id="payment-modal" style="display: none;">
+                <div class="modal-content">
+                    <h3>Sélectionnez le mode de paiement</h3>
+                    <label for="payment-method">Mode de paiement :</label>
+                    <select id="payment-method">
+                        <option value="izoua">Chez Izoua</option>
+                        <option value="moi">Chez Moi</option>
+                    </select>
+                    <button onclick="confirmPaymentMethod()">Confirmer</button>
+                </div>
+            </div>
+            
+            <div id="delivery-summary">
+                <h3>Livraison</h3>
+                <p>Chez Izoua : <span id="delivery-izoua-total">0 FCFA</span></p>
+                <p>Chez Moi : <span id="delivery-moi-total">0 FCFA</span></p>
+            </div>
+        </section>
+        
+    </main>
+
+    <script src="../javascript/script_liv.js"></script>
+</body>
+</html>
